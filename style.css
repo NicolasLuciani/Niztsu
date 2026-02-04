@@ -1,0 +1,501 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+/* =========================== Animações ============================== */
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px);
+    }   
+    50% {
+        transform: translateY(-65px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes flutuar_2 {
+    0% {
+        transform: translateY(-65px);
+    }   
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-65px);
+    }
+}
+
+/* ==================================================================== */
+
+/* ================= HEADER ================= */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    padding: 0 40px;
+    height: 125px;
+
+    background-image: 
+        linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.55),
+            rgba(255, 255, 255, 0.2)
+        ),
+        url("assets/fundo_cabecalho.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    position: relative;
+    z-index: 1000;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* ================= LOGO ================= */
+.logo_cabecalho img {
+    width: 130px;
+    height: 90px;
+    margin-top: 3px;
+    display: block;
+    margin-left: 150px;
+
+    transition: 
+        transform 0.25s ease,
+        filter 0.25s ease;
+}
+
+.logo_cabecalho img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 12px 15px rgba(0, 0, 0, 0.25));
+}
+
+
+/* ================= PESQUISA ================= */
+.pesquisar_cabecalho {
+    flex: 1; /* ocupa o espaço central */
+    width: 340px;
+
+    height: 45px;
+    padding: 0 18px;
+    margin-right: -150px;
+
+    font-size: 16px;
+    font-style: oblique;
+    margin-right: 300px;
+
+    color: #f3f2f4;
+    background-color: rgb(169, 166, 166);
+
+    border: none;
+    border-radius: 30px;
+    outline: none;
+
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.pesquisar_cabecalho::placeholder {
+    color: rgba(243, 242, 244, 0.7);
+}
+
+.pesquisar_cabecalho:hover {
+    background-color: rgb(114, 113, 113);
+}
+
+.pesquisar_cabecalho:focus {
+    box-shadow: 0 0 0 2px #414141;
+    background-color: rgb(150, 148, 148);
+}
+
+/* ================= ÍCONES ================= */
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 100px;
+
+}
+
+.icons_cabecalho_ajuda,
+.icons_cabecalho_carrinho,
+.icons_cabecalho_perfil {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.icons_cabecalho_ajuda i,
+.icons_cabecalho_carrinho i,
+.icons_cabecalho_perfil i {
+    font-size: 26px;
+    color: #333;
+
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.icons_cabecalho_ajuda:hover,
+.icons_cabecalho_carrinho:hover,
+.icons_cabecalho_perfil:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.icons_cabecalho_ajuda:hover i,
+.icons_cabecalho_carrinho:hover i,
+.icons_cabecalho_perfil:hover i {
+    transform: scale(1.2);
+    color: #000;
+}
+
+/*================ rodape =================== */
+
+.rodape {
+    height: 500px;
+    width: 1528px;
+
+    background-color: #151414;
+    color: #dcdcdc;
+    padding: 40px 60px 100px;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+
+.footer-top {
+    display: flex;                    /* FLEXBOX */
+    justify-content: space-between;   /* Distribui os itens nas extremidades e o espaço no meio */
+    margin-bottom: 40px;              /* Adiciona um espaço abaixo do elemento */
+}
+
+.coluna h3 {
+    margin-bottom: 15px;              /* Adiciona um espaço abaixo do elemento */
+}
+
+.coluna a {
+    display: block;                   /* Faz o texto se comportar como um bloco*/
+    margin-bottom: 8px;               /* Adiciona um espaço abaixo do elemento */
+    color: #c0c0c0;
+    text-decoration: none;            /* Remove o sublinhado padrão dos links */
+}
+.coluna a:hover {
+    color: white;
+}
+
+.pagar1 {
+    margin-left: 9px;                 /* Adiciona um espaço a esquerda do elemento */
+}
+
+.pagar {
+    width: 230px;
+    height: 100px;
+}
+
+.redes1 {
+    margin-left: 9px;                 /* Adiciona um espaço a esquerda do elemento */
+}
+
+.redes {
+    width: 120px;
+    height: 40px;
+}
+
+.footer-bottom {
+    display: flex;                   /* Ativa o Flexbox para alinhamento */
+    justify-content: space-between;  /* Distribui os itens nas extremidades e o espaço no meio */
+    border-top: 1px solid #000;    /* Define uma borda superior */
+    padding-top: 65px;               /* Adiciona 65 pixels de espaçamento interno no topo do elemento */
+}
+/*============== corpo index ==============*/
+
+.tenis_painel {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -300px;
+    box-shadow: 0 8px 20px rgba(23, 23, 24, 0.35);
+}
+.container_frase1 {
+    position: relative;
+    height: 450px;
+    margin-top: -10px;
+    background-color:#d0cece;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.frase {
+    font-size: 3rem;
+    font-weight: 400px;
+    line-height: 1.4;
+    text-align: center;
+    max-width: 1000px;
+}
+.aspas {
+    font-size: 60px;
+    font-weight: 800;
+    color: rgb(48, 48, 48);
+}
+
+.tenis_frase_1_1 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin-bottom: 140px;
+    margin-left: -300px;
+
+    animation: flutuar 5s ease-in-out infinite;
+}
+
+.tenis_frase_1_2 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin-left: 210px;
+    margin-top: -92px;
+
+    animation: flutuar_2 5s ease-in-out infinite;
+    
+}
+
+.sobre_nos {
+    height: 900px;
+    width: 1526px;
+    margin-left: -4px;
+    margin-bottom: 9px;
+    background-color: #212121;
+    box-shadow: 0 9px 20px rgba(0, 0, 0, 0.35);
+}
+
+.sobre-nos h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.sobre-nos p {
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.8;
+}
+
+.h1_sobre_nos {
+    color: #dcdcdc;
+    font-size: 40px;
+    padding-top: 350px;
+    padding-left: 200px;
+    padding-bottom: 60px;
+
+}
+
+.paragrafo_sobre_nos {
+    color: #afaeae;
+    font-size: 25px;
+    max-width: 900px;
+    padding-left: 150px;
+    text-align: justify;
+    text-indent: 0.7cm;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.proposito {
+    height: 900px;
+    width: 1526px;
+    margin-left: -4px;
+    margin-bottom: 9px;
+    margin-top: -233px;
+    background-color: #212121;
+    box-shadow: 0 9px 20px rgba(0, 0, 0, 0.35);
+}
+
+.proposito p {
+    font-size: 1.40rem;
+    color: #aaa8a8;
+    line-height: 1.8;
+}
+
+.h1_proposito {
+    color: #dcdcdc;
+    font-size: 40px;
+    padding-top: 350px;
+    padding-left: 200px;
+    padding-bottom: 60px;
+
+}
+
+.paragrafo_proposito {
+    color: #afaeae;
+    font-size: 25px;
+    max-width: 900px;
+    padding-left: 150px;
+    text-align: justify;
+    text-indent: 0.7cm;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap');
+
+:root {
+    --primary: #155e2d; 
+    --bg-color: #f3f3f3;
+    --text-color: #1a1a1a;
+    --transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+body {
+    background-color: var(--bg-color);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* LOGO */
+.brand-corner {
+    position: absolute;
+    top: 40px; left: 50px;
+    font-size: 1.5rem; font-weight: 900; letter-spacing: 2px;
+    z-index: 100; color: var(--text-color);
+    text-transform: uppercase;
+}
+.brand-corner span { color: var(--primary); transition: color 0.5s; }
+
+/* FUNDO */
+.background-circle {
+    position: absolute;
+    width: 120vh; height: 120vh;
+    background: var(--primary);
+    border-radius: 50%;
+    top: -20%; right: -20%;
+    z-index: -1;
+    transition: var(--transition);
+    box-shadow: -20px 20px 60px rgba(0,0,0,0.15);
+}
+
+.big-text {
+    position: absolute;
+    top: 50%; left: 15%;
+    transform: translateY(-50%);
+    font-size: 25vh; font-weight: 900;
+    color: rgba(0,0,0,0.04);
+    z-index: -2; pointer-events: none;
+    transition: transform 0.1s; white-space: nowrap;
+}
+
+/* LAYOUT */
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%; max-width: 1400px;
+    height: 80vh;
+}
+
+.info-box { flex: 1; padding-left: 50px; z-index: 2; }
+
+.product-title {
+    font-size: 4rem; line-height: 1; font-weight: 800;
+    color: var(--text-color); margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.product-title span { color: transparent; -webkit-text-stroke: 2px var(--text-color); }
+
+.product-desc {
+    font-size: 1.1rem; color: #555;
+    margin-bottom: 30px; max-width: 450px; line-height: 1.6;
+}
+
+.price-box {
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--text-color); margin-bottom: 30px;
+    display: inline-block;
+}
+
+/* BOTÕES */
+.cta-btn {
+    padding: 18px 45px;
+    background: var(--text-color); color: #fff;
+    border-radius: 40px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px;
+    border: none; cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.cta-btn:hover { transform: translateY(-5px); background: var(--primary); }
+
+.size-selector { margin-bottom: 25px; display: flex; gap: 15px; }
+.size-box {
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    font-weight: 700; cursor: pointer;
+    background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);
+    backdrop-filter: blur(5px); transition: 0.3s;
+}
+.size-box:hover, .size-box.active { background: var(--text-color); color: #fff; transform: scale(1.1); }
+
+/* IMAGEM PRINCIPAL */
+.image-box {
+    flex: 1.2; position: relative;
+    display: flex; justify-content: center; align-items: center; height: 100%;
+}
+
+.shoe-img {
+    width: 120%; max-width: 850px;
+    transform: rotate(-25deg); /* Posição inicial inclinada */
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.4)); /* Sombra realista */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+/* THUMBNAILS */
+.thumbs-container {
+    position: absolute; bottom: 50px; left: 50%;
+    transform: translateX(-50%); display: flex; gap: 25px;
+    padding: 15px 30px; background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px; backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 20;
+}
+.thumb { 
+    width: 70px; height: 70px; cursor: pointer; 
+    transition: 0.3s; opacity: 0.7; 
+    display: flex; align-items: center; justify-content: center; 
+    border-radius: 15px; overflow: hidden;
+}
+.thumb:hover, .thumb.active { opacity: 1; transform: scale(1.2) translateY(-10px); border: 2px solid var(--primary); }
+.thumb img { width: 100%; object-fit: contain; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); }
+
+/* CELULAR */
+@media (max-width: 1024px) {
+    .main-container { flex-direction: column-reverse; justify-content: center; text-align: center; }
+    .background-circle { width: 100%; height: 50%; top: auto; bottom: 0; right: 0; border-radius: 0; clip-path: ellipse(150% 100% at 50% 100%); }
+    .info-box { padding: 0; margin-top: 30px; }
+    .product-title { font-size: 3rem; }
+    .shoe-img { width: 80%; max-width: 400px; transform: rotate(-15deg); }
+    .thumbs-container { bottom: 20px; }
+    .size-selector { justify-content: center; }
+    .big-text { font-size: 15vh; top: 20%; left: 50%; transform: translateX(-50%); }
+}

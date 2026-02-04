@@ -1,0 +1,254 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    --bg-dark: #121212;
+    --card-bg: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent: #00ff88; /* Verde Neon */
+}
+
+html, body {
+    overflow-x: hidden; /* Evita barra de rolagem lateral */
+    width: 100%;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+}
+
+/* ================= HEADER ================= */
+.cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    height: 100px;
+    background: rgba(20, 20, 20, 0.95); /* Escuro e moderno */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #333;
+    position: fixed; /* Menu fixo no topo */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.logo_cabecalho img {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+
+/* Pesquisa */
+.pesquisar_cabecalho {
+    width: 300px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.pesquisar_cabecalho:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+}
+
+/* Ícones */
+.icons {
+    display: flex;
+    gap: 20px;
+}
+
+.icons a {
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+.icons a i {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.icons a:hover {
+    background: var(--accent);
+}
+.icons a:hover i {
+    color: #000;
+}
+
+/* ================= HERO (Tênis Flutuando) ================= */
+.corpo_painel {
+    margin-top: 100px; /* Compensa o menu fixo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tenis_painel {
+    width: 80%;
+    max-width: 700px;
+    margin: 60px 0;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ================= FIELDSETS (Cards) ================= */
+/* O HTML usa fieldset, vamos deixar bonito */
+.sobre_nos, .proposito {
+    border: none;
+    background-color: var(--card-bg);
+    width: 90%;
+    max-width: 1200px;
+    padding: 50px;
+    margin: 40px auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Títulos das seções */
+.h1_sobre_nos, .h1_proposito {
+    font-family: 'Goldman', cursive;
+    color: var(--accent);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    display: block; /* Garante que fique acima */
+    width: 100%;
+}
+
+.paragrafo_sobre_nos, .paragrafo_proposito {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* ================= FRASE DESTAQUE ================= */
+.container_frase1 {
+    width: 100%;
+    background-color: var(--accent);
+    padding: 60px 0;
+    margin: 80px 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frase {
+    font-family: 'Goldman', cursive;
+    font-size: 2rem;
+    color: #000;
+    text-align: center;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+}
+
+/* Imagens decorativas na frase */
+.tenis_frase_1_1, .tenis_frase_1_2 {
+    position: absolute;
+    width: 150px;
+    opacity: 0.15; /* Sutil */
+    filter: grayscale(1);
+}
+
+.tenis_frase_1_1 { left: 10%; top: 10%; transform: rotate(-15deg); }
+.tenis_frase_1_2 { right: 10%; bottom: 10%; transform: rotate(15deg); }
+
+.aspas {
+    font-size: 4rem;
+    vertical-align: sub;
+    color: #000;
+}
+
+/* ================= RODAPÉ ================= */
+.rodape {
+    background-color: #000;
+    padding: 60px 5% 20px;
+    margin-top: 50px;
+    border-top: 1px solid #333;
+    width: 100%;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.coluna h3 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Goldman', cursive;
+}
+
+.coluna a {
+    display: block;
+    color: #777;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+.coluna a:hover { color: var(--accent); padding-left: 5px; }
+
+.pagar, .redes {
+    max-width: 100%;
+    height: auto;
+    filter: invert(1) opacity(0.7); /* Deixa branco se for preto */
+}
+
+.footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* ================= CELULAR ================= */
+@media (max-width: 768px) {
+    .cabecalho {
+        padding: 10px;
+        height: auto;
+        flex-direction: column;
+        gap: 15px;
+        padding-bottom: 15px;
+    }
+    
+    .pesquisar_cabecalho { width: 100%; }
+    .icons { width: 100%; justify-content: center; }
+    .logo_cabecalho { margin: 0; }
+    
+    .frase { font-size: 1.2rem; padding: 0 20px; }
+    .tenis_frase_1_1, .tenis_frase_1_2 { display: none; } /* Esconde no celular pra limpar */
+    
+    .sobre_nos, .proposito { width: 95%; padding: 25px; }
+    .h1_sobre_nos, .h1_proposito { font-size: 1.8rem; text-align: center; }
+}
