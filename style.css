@@ -498,3 +498,148 @@ html {
     .size-selector { justify-content: center; }
     .big-text { font-size: 15vh; top: 20%; left: 50%; transform: translateX(-50%); }
 }
+
+/* ================= RESET & FONTES ================= */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f3f3f3; /* Cinza super claro (Clean) */
+    overflow-x: hidden; /* Evita barra de rolagem horizontal */
+    height: 100vh;
+}
+
+/* ================= HEADER (Seu código ajustado) ================= */
+.header_ {
+    position: absolute; top: 0; left: 0; width: 100%; height: 60px; /* Um pouco mais alto pra respirar */
+    display: flex; justify-content: center; align-items: center; gap: 45px;
+    background-color: rgba(243, 243, 243, 0.7); /* Mesma cor do fundo, mas transparente */
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+/* ... (mantenha o resto do seu CSS de logo e menu aqui) ... */
+
+
+/* ================= HERO SECTION (O CORPO) ================= */
+.hero-container {
+    height: 100vh; /* Ocupa a tela toda */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 60px; /* Para não ficar atrás do header */
+}
+
+/* Texto Gigante no Fundo (Estilo Nike) */
+.big-text-bg {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25vw; /* Gigantesco */
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.03); /* Quase invisível */
+    z-index: 1;
+    pointer-events: none; /* Não atrapalha o clique */
+    user-select: none;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 50px;
+    z-index: 2; /* Fica na frente do texto gigante */
+}
+
+/* LADO ESQUERDO (TEXTO) */
+.text-side { flex: 1; }
+
+.subtitle {
+    font-size: 14px; text-transform: uppercase; letter-spacing: 4px;
+    color: #666; margin-bottom: 10px; font-weight: 600;
+}
+
+.title {
+    font-size: 5rem; line-height: 1; color: #1a1a1a;
+    font-weight: 800; margin-bottom: 20px;
+}
+.title span { color: #555; } /* "AIR FLOW" um pouco mais claro */
+
+.description {
+    font-size: 1rem; color: #666; max-width: 450px;
+    margin-bottom: 40px; line-height: 1.6;
+}
+
+/* BOTÕES */
+.cta-group { display: flex; gap: 20px; }
+
+.btn-primary {
+    padding: 15px 40px; background-color: #1a1a1a; color: #fff;
+    text-decoration: none; border-radius: 50px; font-weight: 600;
+    transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.btn-primary:hover { transform: translateY(-3px); background-color: #000; }
+
+.btn-secondary {
+    padding: 15px 40px; background-color: transparent; color: #1a1a1a;
+    text-decoration: none; border-radius: 50px; font-weight: 600;
+    border: 2px solid #e0e0e0; transition: 0.3s;
+}
+.btn-secondary:hover { border-color: #1a1a1a; }
+
+/* LADO DIREITO (IMAGEM) */
+.image-side {
+    flex: 1.2; display: flex; justify-content: center; position: relative;
+}
+
+.circle-bg {
+    position: absolute; width: 450px; height: 450px;
+    background: linear-gradient(135deg, #e0e0e0 0%, #f3f3f3 100%);
+    border-radius: 50%; z-index: -1;
+}
+
+.hero-shoe {
+    width: 120%; max-width: 650px;
+    transform: rotate(-15deg); /* Inclinadinho */
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.3)); /* Sombra realista */
+    animation: flutuar 4s ease-in-out infinite; /* SUA ANIMAÇÃO */
+}
+
+/* Cardzinho de preço flutuante */
+.float-card {
+    position: absolute; bottom: 40px; right: 50px;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+    padding: 15px 25px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: flutuar 5s ease-in-out infinite reverse; /* Flutua ao contrário */
+}
+.float-card span { display: block; font-size: 12px; color: #666; }
+.float-card strong { font-size: 18px; color: #1a1a1a; }
+
+/* FOOTER SIMPLES */
+.footer-simple {
+    position: absolute; bottom: 20px; width: 100%; text-align: center;
+    font-size: 12px; color: #999;
+}
+
+/* ANIMAÇÃO DE FLUTUAR (A que você já tinha, ajustada) */
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0) rotate(-15deg); }
+    50% { transform: translateY(-20px) rotate(-15deg); }
+}
+
+/* RESPONSIVO (Celular) */
+@media (max-width: 900px) {
+    .hero-content { flex-direction: column-reverse; text-align: center; }
+    .title { font-size: 3rem; }
+    .description { margin: 0 auto 30px; }
+    .hero-shoe { width: 80%; margin-bottom: 30px; }
+    .cta-group { justify-content: center; }
+    .big-text-bg { display: none; } /* Esconde texto gigante no celular */
+    .float-card { display: none; }
+}
