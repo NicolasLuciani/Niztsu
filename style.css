@@ -360,6 +360,7 @@ html {
 
 :root {
     --primary: #155e2d; 
+    --secundary: #208943;
     --bg-color: #f3f3f3;
     --text-color: #1a1a1a;
     --transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -483,7 +484,7 @@ html {
     display: flex; align-items: center; justify-content: center; 
     border-radius: 15px; overflow: hidden;
 }
-.thumb:hover, .thumb.active { opacity: 1; transform: scale(1.2) translateY(-10px); border: 2px solid var(--primary); }
+.thumb:hover, .thumb.active { opacity: 1; transform: scale(1.2) translateY(-10px); border: 2px solid var(--secundary); }
 .thumb img { width: 100%; object-fit: contain; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); }
 
 /* CELULAR */
