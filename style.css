@@ -7,162 +7,165 @@
 }
 
 /* =========================== Animações ============================== */
-@keyframes flutuar {
-    0% {
-        transform: translateY(0px);
-    }   
-    50% {
-        transform: translateY(-65px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+
+/* Efeito de carregamento suave na página inteira */
+body {
+    background-color: var(--bg-color);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    animation: surgirSuave 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+
 }
 
-@keyframes flutuar_2 {
+@keyframes surgirSuave {
     0% {
-        transform: translateY(-65px);
-    }   
-    50% {
-        transform: translateY(0px);
+        opacity: 0; /* Começa invisível */
+        transform: translateY(20px); /* Começa um pouquinho pra baixo */
     }
     100% {
-        transform: translateY(-65px);
+        opacity: 1; /* Fica visível */
+        transform: translateY(0); /* Vai para a posição original */
     }
 }
 
 /* ==================================================================== */
 
 /* ================= HEADER ================= */
-.cabecalho {
+/* ================= HEADER ESTILO APPLE ================= */
+.header_ {
+    position: absolute; /* Ou fixed para ficar fixo ao rolar */
+    top: 0; /* Apple cola no teto, não usa 3% */
+    left: 0;
+    width: 100%;
+    height: 48px; /* Altura padrão Apple */
+    
+    /* FLEXBOX INTELIGENTE */
     display: flex;
+    justify-content: center; /* Centraliza o bloco todo na tela */
     align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-
-    padding: 0 40px;
-    height: 125px;
-
-    background-image: 
-        linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.55),
-            rgba(255, 255, 255, 0.2)
-        ),
-        url("assets/fundo_cabecalho.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    position: relative;
+    
+    /* O SEGREDO DO ESPAÇAMENTO IGUAL */
+    gap: 45px; /* Espaço entre Logo <-> Menu <-> Ícones */
+    
+    /* VISUAL "VIDRO" (APPLE) */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco transparente */
+    backdrop-filter: blur(15px); /* Desfoque do fundo (efeito vidro) */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Linha sutil embaixo */
+    
     z-index: 1000;
-
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* ================= LOGO ================= */
-.logo_cabecalho img {
-    width: 130px;
-    height: 90px;
-    margin-top: 3px;
-    display: block;
-    margin-left: 150px;
-
-    transition: 
-        transform 0.25s ease,
-        filter 0.25s ease;
+.logo_cabecalho {
+    width: auto; /* Deixe automático para não distorcer */
+    height: 30px; /* Logos da Apple costumam ser pequenas e discretas */
+    cursor: pointer;
+    opacity: 0.8; /* Um pouco suave */
+    transition: opacity 0.3s;
 }
 
-.logo_cabecalho img:hover {
-    transform: scale(1.15);
-    filter: drop-shadow(0 12px 15px rgba(0, 0, 0, 0.25));
+.logo_cabecalho:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
 }
 
-
-/* ================= PESQUISA ================= */
-.pesquisar_cabecalho {
-    flex: 1; /* ocupa o espaço central */
-    width: 340px;
-
-    height: 45px;
-    padding: 0 18px;
-    margin-right: -150px;
-
-    font-size: 16px;
-    font-style: oblique;
-    margin-right: 300px;
-
-    color: #f3f2f4;
-    background-color: rgb(169, 166, 166);
-
-    border: none;
-    border-radius: 30px;
-    outline: none;
-
-    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+/* ================= LINKS DO MEIO (Adicionais) ================= */
+.adicionais {
+    display: flex;
+    align-items: center;
+    gap: 45px; /* TEM QUE SER IGUAL AO GAP DO HEADER para parecer uniforme */
 }
 
-.pesquisar_cabecalho::placeholder {
-    color: rgba(243, 242, 244, 0.7);
+.adicionais a {
+    text-decoration: none;
+    color: #535252; /* Cinza escuro, não preto puro */
+    font-size: 12px; /* Apple usa fontes pequenas */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 400; /* Fonte fina */
+    transition: color 0.3s;
 }
 
-.pesquisar_cabecalho:hover {
-    background-color: rgb(114, 113, 113);
-}
-
-.pesquisar_cabecalho:focus {
-    box-shadow: 0 0 0 2px #414141;
-    background-color: rgb(150, 148, 148);
+.adicionais a:hover {
+    color: #000; 
 }
 
 /* ================= ÍCONES ================= */
 .icons {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 100px;
-
-}
-
-.icons_cabecalho_ajuda,
-.icons_cabecalho_carrinho,
-.icons_cabecalho_perfil {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-right: 25px;
-
-    border-radius: 50%;
-    cursor: pointer;
-
-    transition: background-color 0.2s ease;
+    gap: 45px; /* TEM QUE SER IGUAL AO GAP DO HEADER */
 }
 
-.icons_cabecalho_ajuda i,
-.icons_cabecalho_carrinho i,
-.icons_cabecalho_perfil i {
-    font-size: 26px;
-    color: #333;
-
-    display: inline-block;
-    transition: transform 0.2s ease, color 0.2s ease;
+.icons a {
+    text-decoration: none;
+    color: #3e3e3e;
+    display: flex; /* Para alinhar o i dentro do a */
 }
 
-.icons_cabecalho_ajuda:hover,
-.icons_cabecalho_carrinho:hover,
-.icons_cabecalho_perfil:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+.icons i {
+    font-size: 16px; /* Tamanho discreto */
+    transition: color 0.3s, transform 0.3s;
 }
 
-.icons_cabecalho_ajuda:hover i,
-.icons_cabecalho_carrinho:hover i,
-.icons_cabecalho_perfil:hover i {
-    transform: scale(1.2);
-    color: #000;
+.icons a:hover i {
+    color: #000000;
+    transform: scale(1.2); /* Leve zoom */
+    transition: transform 0.3s ease;
+}
+
+/* ================= ITEM ATIVO (Página Atual) ================= */
+
+/* O link em si */
+.adicionais a.pagina_atual {
+    color: #000;          /* Texto fica preto */
+    font-weight: 600;     /* Texto fica negrito (semi-bold fica mais elegante que bold) */
+    position: relative;   /* Importante: Torna este o "pai" para a linha se posicionar */
+}
+
+/* A linha preta estilizada */
+.adicionais a.pagina_atual::after {
+    content: '';          /* Obrigatório para criar o elemento */
+    position: absolute;   /* Posiciona livremente em relação ao pai */
+    
+    /* Tamanho e Cor da Linha */
+    width: 100%;          /* A linha terá a mesma largura da palavra */
+    height: 2px;          /* Espessura da linha (fina e elegante) */
+    background-color: #000; 
+    
+    /* Posicionamento */
+    left: 0;
+    bottom: -14px;        /* Aqui é a mágica: empurra a linha para longe do texto */
+    
+    /* Efeito de surgimento (opcional, mas fica chique) */
+    animation: crescerLinha 0.4s ease forwards;
+}
+
+/* Animaçãozinha para a linha abrir do centro para as pontas */
+@keyframes crescerLinha {
+    from { width: 0%; left: 50%; }
+    to { width: 100%; left: 0; }
+}
+
+/* ================= AJUSTE RESPONSIVO (Celular) ================= */
+/* No celular, esse espaçamento quebra, então diminuímos */
+@media (max-width: 768px) {
+    .header_ {
+        justify-content: space-between; /* Espalha nas pontas */
+        padding: 0 20px;
+        gap: 0;
+    }
+    .adicionais {
+        display: none; /* Esconde os links no celular (precisaria de menu hambúrguer) */
+    }
+    .icons {
+        gap: 20px;
+    }
 }
 
 /*================ rodape =================== */
@@ -362,16 +365,7 @@ html {
     --transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-body {
-    background-color: var(--bg-color);
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+
 
 /* LOGO */
 .brand-corner {
@@ -443,8 +437,12 @@ body {
     border: none; cursor: pointer;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     transition: 0.3s;
+    text-decoration: none;
 }
-.cta-btn:hover { transform: translateY(-5px); background: var(--primary); }
+.cta-btn:hover { 
+    transform: scale(1.10);
+    transition: 0.2s ease; 
+    background: var(--primary); }
 
 .size-selector { margin-bottom: 25px; display: flex; gap: 15px; }
 .size-box {

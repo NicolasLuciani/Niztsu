@@ -1,4 +1,4 @@
-/* ================= RESET ================= */
+/* ================= RESET & CORES GERAIS ================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,247 +8,202 @@
 }
 
 :root {
-    --bg-dark: #121212;
-    --card-bg: #1e1e1e;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --accent: #00ff88; /* Verde Neon */
+    /* Paleta Premium Monocromática */
+    --bg-overlay: rgba(0, 0, 0, 0.85); /* Cor dos cards (quase preto) */
+    --texto-principal: #ffffff;
+    --texto-secundario: #b0b0b0;
+    --detalhe: #ffffff; /* Detalhes em branco puro para contraste */
 }
 
 html, body {
-    overflow-x: hidden; /* Evita barra de rolagem lateral */
     width: 100%;
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
+    height: 100%;
+    overflow-x: hidden;
+    background-color: #000; /* Fundo de segurança caso a imagem não carregue */
 }
 
-/* ================= HEADER ================= */
-.cabecalho {
+/* ================= IMAGEM FIXA (HERO) ================= */
+/* A mágica acontece aqui */
+.tenis_painel {
+    position: fixed; /* Fixa na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* 100% da altura da visão */
+    object-fit: cover; /* Corta as bordas para preencher sem esticar (proporcional) */
+    z-index: -1; /* Joga para trás do texto */
+    filter: brightness(0.6); /* Escurece um pouco a imagem para ler o menu */
+}
+
+/* Espaço vazio para a gente ver a imagem antes do texto subir */
+.painel-texto {
+    height: 90vh; /* Deixa 90% da tela livre só para a imagem */
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 5%;
-    height: 100px;
-    background: rgba(20, 20, 20, 0.95); /* Escuro e moderno */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid #333;
-    position: fixed; /* Menu fixo no topo */
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+/* Adicionei um texto via CSS para dar boas vindas na imagem */
+.painel-texto::after {
+    content: "SCROLL DOWN";
+    color: white;
+    font-family: 'Goldman', cursive;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    animation: piscar 2s infinite;
+}
+
+@keyframes piscar {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+/* ================= CABEÇALHO (HEADER) ================= */
+.cabecalho {
+    position: fixed;
     top: 0;
     width: 100%;
+    height: 90px;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Gradiente transparente para ler o menu sobre a imagem */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
     z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-}
-
-.logo_cabecalho img {
-    height: 60px;
-    width: auto;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-}
-
-/* Pesquisa */
-.pesquisar_cabecalho {
-    width: 300px;
-    height: 40px;
-    padding: 0 20px;
-    border-radius: 20px;
-    border: 1px solid #444;
-    background-color: #2a2a2a;
-    color: #fff;
-    outline: none;
     transition: 0.3s;
 }
 
-.pesquisar_cabecalho:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.2);
+/* Logo Branca */
+.logo_cabecalho img {
+    height: 50px;
+    filter: brightness(0) invert(1); /* Força a logo a ficar branca */
 }
+
+/* Barra de Pesquisa Minimalista */
+.pesquisar_cabecalho {
+    background: rgba(255, 255, 255, 0.1); /* Vidro */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    padding: 10px 25px;
+    color: #fff;
+    width: 300px;
+    backdrop-filter: blur(5px);
+    outline: none;
+}
+.pesquisar_cabecalho::placeholder { color: rgba(255,255,255,0.6); }
 
 /* Ícones */
-.icons {
-    display: flex;
-    gap: 20px;
-}
+.icons { display: flex; gap: 25px; }
+.icons a i { font-size: 1.4rem; color: #fff; transition: 0.3s; }
+.icons a:hover i { 
+    transform: scale(1.15);
+    transition: 0.3s ease; 
+    color: #ccc; }
 
-.icons a {
-    width: 40px; height: 40px;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    transition: 0.3s;
-}
-
-.icons a i {
-    font-size: 1.2rem;
-    color: #fff;
-}
-
-.icons a:hover {
-    background: var(--accent);
-}
-.icons a:hover i {
-    color: #000;
-}
-
-/* ================= HERO (Tênis Flutuando) ================= */
+/* ================= CONTEÚDO (SOBRE E PROPÓSITO) ================= */
+/* O container principal agora desliza por cima da imagem */
 .corpo_painel {
-    margin-top: 100px; /* Compensa o menu fixo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
     width: 100%;
+    z-index: 10;
 }
 
-.tenis_painel {
-    width: 80%;
-    max-width: 700px;
-    margin: 60px 0;
-    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.5));
-    animation: flutuar 4s ease-in-out infinite;
-}
-
-@keyframes flutuar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-/* ================= FIELDSETS (Cards) ================= */
-/* O HTML usa fieldset, vamos deixar bonito */
+/* Estilo dos blocos de texto */
 .sobre_nos, .proposito {
-    border: none;
-    background-color: var(--card-bg);
-    width: 90%;
-    max-width: 1200px;
-    padding: 50px;
-    margin: 40px auto;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background-color: var(--bg-overlay); /* Fundo escuro sólido */
+    border: 1px solid rgba(255,255,255,0.1); /* Borda fina elegante */
+    width: 100%; /* Ocupa largura total */
+    max-width: 100%; /* Garante full width */
+    padding: 80px 10%; /* Espaçamento interno grande */
+    margin: 0; /* Remove margens externas para colar um no outro */
+    border-radius: 0; /* Quadrado para parecer seção de site */
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.5); /* Sombra no topo */
 }
 
-/* Títulos das seções */
 .h1_sobre_nos, .h1_proposito {
     font-family: 'Goldman', cursive;
-    color: var(--accent);
-    font-size: 2.5rem;
+    color: var(--texto-principal);
+    font-size: 3rem;
     text-transform: uppercase;
-    padding-bottom: 20px;
-    display: block; /* Garante que fique acima */
+    margin-bottom: 30px;
+    display: block;
     width: 100%;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
 }
 
 .paragrafo_sobre_nos, .paragrafo_proposito {
-    color: var(--text-secondary);
-    font-size: 1.2rem;
+    color: var(--texto-secundario);
+    font-size: 1.3rem;
     line-height: 1.8;
+    max-width: 900px;
     text-align: justify;
-    margin-bottom: 20px;
 }
 
-/* ================= FRASE DESTAQUE ================= */
+/* ================= FAIXA DESTAQUE ================= */
 .container_frase1 {
     width: 100%;
-    background-color: var(--accent);
-    padding: 60px 0;
-    margin: 80px 0;
+    background-color: #fff; /* Inverte: Fundo branco */
+    padding: 80px 0;
+    margin: 0;
     position: relative;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .frase {
+    color: #000; /* Texto preto */
     font-family: 'Goldman', cursive;
-    font-size: 2rem;
-    color: #000;
+    font-size: 2.5rem;
     text-align: center;
     max-width: 800px;
-    position: relative;
     z-index: 2;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-/* Imagens decorativas na frase */
+.aspas { font-size: 5rem; line-height: 0; color: #000; }
+
 .tenis_frase_1_1, .tenis_frase_1_2 {
     position: absolute;
-    width: 150px;
-    opacity: 0.15; /* Sutil */
+    width: 200px;
+    opacity: 0.1;
     filter: grayscale(1);
 }
-
-.tenis_frase_1_1 { left: 10%; top: 10%; transform: rotate(-15deg); }
-.tenis_frase_1_2 { right: 10%; bottom: 10%; transform: rotate(15deg); }
-
-.aspas {
-    font-size: 4rem;
-    vertical-align: sub;
-    color: #000;
-}
+.tenis_frase_1_1 { left: 5%; top: 10%; transform: rotate(-15deg); }
+.tenis_frase_1_2 { right: 5%; bottom: 10%; transform: rotate(15deg); }
 
 /* ================= RODAPÉ ================= */
 .rodape {
-    background-color: #000;
-    padding: 60px 5% 20px;
-    margin-top: 50px;
-    border-top: 1px solid #333;
-    width: 100%;
+    background-color: #0a0a0a; /* Quase preto */
+    padding: 80px 5% 30px;
+    color: #fff;
+    z-index: 20;
+    position: relative; /* Garante que fique acima da imagem fixa */
 }
 
 .footer-top {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
+    gap: 50px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 40px;
 }
 
 .coluna h3 {
-    color: #fff;
-    margin-bottom: 20px;
     font-family: 'Goldman', cursive;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
 
 .coluna a {
     display: block;
-    color: #777;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-.coluna a:hover { color: var(--accent); padding-left: 5px; }
-
-.pagar, .redes {
-    max-width: 100%;
-    height: auto;
-    filter: invert(1) opacity(0.7); /* Deixa branco se for preto */
-}
-
-.footer-bottom {
-    border-top: 1px solid #222;
-    padding-top: 20px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* ================= CELULAR ================= */
-@media (max-width: 768px) {
-    .cabecalho {
-        padding: 10px;
-        height: auto;
-        flex-direction: column;
-        gap: 15px;
-        padding-bottom: 15px;
-    }
-    
-    .pesquisar_cabecalho { width: 100%; }
-    .icons { width: 100%; justify-content: center; }
-    .logo_cabecalho { margin: 0; }
-    
-    .frase { font-size: 1.2rem; padding: 0 20px; }
-    .tenis_frase_1_1, .tenis_frase_1_2 { display: none; } /* Esconde no celular pra limpar */
-    
-    .sobre_nos, .proposito { width: 95%; padding: 25px; }
-    .h1_sobre_nos, .h1_proposito { font-size: 1.8rem; text-align: center; }
 }
